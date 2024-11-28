@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lost and Found</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Lost and Found</h1>
+            <p>Your place to report and recover lost items</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="form-section">
+                <h2>Report a Lost Item</h2>
+                <form id="lost-form">
+                    <input type="text" id="lost-item" name="lost-item" placeholder="Describe the lost item" required>
+                    <input type="text" id="date-time-input-lost" placeholder="Enter Date and Time" required>
+                    <button type="submit">Report Lost</button>
+                </form>
+            </section>
+
+            <section class="form-section">
+                <h2>Report a Found Item</h2>
+                <form id="found-form">
+                    <input type="text" id="found-item" name="found-item" placeholder="Describe the found item" required>
+                    <input type="text" id="date-time-input-found" placeholder="Enter Date and Time" required>
+                    <button type="submit">Report Found</button>
+                </form>
+            </section>
+
+            <section class="items-section">
+                <h2>Lost and Found Items</h2>
+                <div id="item-list">
+                    <div class="items">
+                        <h3>Lost Items</h3>
+                        <ul id="lost-items-list"></ul>
+                    </div>
+                    <div class="items">
+                        <h3>Found Items</h3>
+                        <ul id="found-items-list"></ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Lost and Found | All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
