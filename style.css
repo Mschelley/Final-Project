@@ -1,118 +1,303 @@
-body {
-    font-family: Arial, sans-serif;
+* {
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    box-sizing: border-box;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    transition: all 0.3s ease;
 }
 
-.container {
-    width: 80%;
+body {
+    background-color: #f7f9fb;
+    color: #333;
+    line-height: 1.7;
+    font-size: 16px;
+}
+
+.navbar {
+    background: linear-gradient(90deg, #0b5e9e, #042444);
+    padding: 25px 40px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
-header {
-    background-color: #333333c1;
-    color: white;
-    padding: 20px 0;
+.navbar .logo {
+    font-size: 30px;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+.navbar .logo:hover {
+    color: #f39c12;
+}
+
+.navbar .nav-links {
+    list-style-type: none;
+    display: flex;
+    gap: 30px;
+}
+
+.navbar .nav-links li {
+    display: inline-block;
+}
+
+.navbar .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar .nav-links a:hover {
+    background-color: #f39c12;
+    color: #fff;
+}
+
+.navbar .search-container input {
+    padding: 12px 20px;
+    border-radius: 30px;
+    border: 2px solid #ccc;
+    width: 250px;
+    font-size: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navbar .search-container input:focus {
+    border-color: #f39c12;
+    box-shadow: 0 0 10px rgba(243, 156, 18, 0.2);
+}
+
+.container {
+    width: 85%;
+    margin: 50px auto;
+    animation: fadeIn 1s ease-out;
+}
+
+.main-title {
     text-align: center;
+    font-size: 42px;
+    margin-bottom: 40px;
+    color: #1e2a33;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    animation: slideIn 1s ease-out;
 }
 
-h1 {
-    margin: 0;
-    font-size: 2.5rem;
+.form-container {
+    background-color: #ffffff;
+    padding: 35px;
+    margin-top: 50px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    animation: zoomIn 0.5s ease-out;
 }
 
-p {
-    font-size: 1.2rem;
+.form-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
-
-.form-section {
-    margin-bottom: 20px;
+.form-container h2 {
+    font-size: 30px;
+    color: #1e2a33;
+    margin-bottom: 25px;
+    font-weight: 600;
 }
 
-input {
-    padding: 10px;
-    width: 80%;
-    margin-bottom: 10px;
-    font-size: 1rem;
+.form-container label {
+    display: block;
+    margin-top: 12px;
+    color: #555;
+    font-weight: 500;
 }
 
-button {
-    padding: 10px 20px;
-    font-size: 1rem;
-    cursor: pointer;
+.form-container input {
+    width: 100%;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
 }
 
-button[type="submit"] {
+.form-container input:focus {
+    border-color: #f39c12;
+    background-color: #fff;
+}
+
+.form-container button {
+    width: 100%;
+    padding: 15px;
+    margin-top: 25px;
     background-color: #4CAF50;
     color: white;
     border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-button[type="submit"]:hover {
+.form-container button:hover {
     background-color: #45a049;
+    transform: scale(1.05);
 }
 
+section {
+    margin-top: 60px;
+}
 
-.items-section {
-    margin-top: 30px;
+section h2 {
+    color: #1e2a33;
+    font-size: 32px;
+    margin-bottom: 20px;
+    font-weight: 600;
 }
 
 ul {
     list-style-type: none;
-    padding: 0;
 }
 
 li {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 10px;
-    margin-bottom: 10px;
+    background-color: #ffffff;
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-li span {
-    flex-grow: 1;
+li:hover {
+    background-color: #f7f7f7;
+    transform: translateY(-3px);
 }
 
-button {
-    background: none;
+li button {
+    background-color: #2196F3;
+    color: white;
+    padding: 10px 20px;
     border: none;
+    border-radius: 6px;
     cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-button.done-btn {
-    background: none;
-    border: none;
-    color: green;
-    font-size: 1.2rem;
-    cursor: pointer;
+li button:hover {
+    background-color: #1976D2;
+    transform: scale(1.1);
 }
 
-button.done-btn:hover {
-    color: #004d00;
+footer {
+    background-color: #333;
+    color: white;
+    padding: 25px;
+    text-align: center;
+    margin-top: 50px;
+    border-radius: 12px;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
 }
 
-button.done-btn:disabled {
-    color: gray;
-    cursor: not-allowed;
+footer p {
+    margin: 0;
+    font-size: 16px;
 }
 
+@media screen and (max-width: 768px) {
+    .navbar .container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 
-li span[style="text-decoration: line-through;"] {
-    color: #808080;
+    .navbar .nav-links {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .navbar .search-container input {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .container {
+        width: 90%;
+    }
+
+    .form-container {
+        padding: 30px;
+    }
+
+    .main-title {
+        font-size: 30px;
+    }
 }
 
+@media screen and (max-width: 480px) {
+    .navbar .search-container input {
+        width: 100%;
+        font-size: 14px;
+    }
 
-button.edit-btn, button.delete-btn {
-    color: #007bff;
-    font-size: 1.2rem;
-    margin-left: 10px;
+    .form-container input, .form-container button {
+        font-size: 14px;
+    }
+
+    .main-title {
+        font-size: 28px;
+    }
 }
 
-button.edit-btn:hover {
-    color: #0056b3;
-} 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-50%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
