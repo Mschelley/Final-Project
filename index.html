@@ -3,52 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lost and Found</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Lost and Found Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .form-container {
+            margin-bottom: 30px;
+        }
+
+        .form-container label {
+            font-size: 1.1em;
+        }
+
+        .form-container input {
+            padding: 10px;
+            margin: 10px 0;
+            width: 100%;
+            font-size: 1.1em;
+        }
+
+        .form-container button {
+            padding: 10px 20px;
+            font-size: 1.1em;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .form-container button:hover {
+            background-color: #45a049;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            padding: 10px;
+            background-color: #f4f4f4;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        button {
+            padding: 5px 10px;
+            margin: 0 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+        }
+
+        .done-icon {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .edit-icon {
+            background-color: #ffa500;
+            color: white;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>Lost and Found</h1>
-            <p>Your place to report and recover lost items</p>
-        </div>
-    </header>
 
-    <main>
-        <div class="container">
-            <section class="form-section">
-                <h2>Report a Lost Item</h2>
-                <form id="lost-form">
-                    <input type="text" id="lost-item" name="lost-item" placeholder="Describe the lost item" required>
-                    <input type="text" id="date-time-input-lost" placeholder="Enter Date and Time" required>
-                    <button type="submit">Report Lost</button>
-                </form>
-            </section>
+    <h1>Lost and Found Management</h1>
 
-            <section class="form-section">
-                <h2>Report a Found Item</h2>
-                <form id="found-form">
-                    <input type="text" id="found-item" name="found-item" placeholder="Describe the found item" required>
-                    <input type="text" id="date-time-input-found" placeholder="Enter Date and Time" required>
-                    <button type="submit">Report Found</button>
-                </form>
-            </section>
+    <div class="form-container">
+        <h2>Lost Item Form</h2>
+        <form id="lost-form">
+            <label for="lost-item">Item Description:</label>
+            <input type="text" id="lost-item" required>
+            <label for="date-time-input-lost">Date and Time:</label>
+            <input type="datetime-local" id="date-time-input-lost" required>
+            <button type="submit">Add Lost Item</button>
+        </form>
+    </div>
 
-            <section class="items-section">
-                <h2>Lost and Found Items</h2>
-                <div id="item-list">
-                    <div class="items">
-                        <h3>Lost Items</h3>
-                        <ul id="lost-items-list"></ul>
-                    </div>
-                    <div class="items">
-                        <h3>Found Items</h3>
-                        <ul id="found-items-list"></ul>
-                    </div>
-                </div>
-            </section>
-        </div>
-    </main>
+    <div class="form-container">
+        <h2>Found Item Form</h2>
+        <form id="found-form">
+            <label for="found-item">Item Description:</label>
+            <input type="text" id="found-item" required>
+            <label for="date-time-input-found">Date and Time:</label>
+            <input type="datetime-local" id="date-time-input-found" required>
+            <button type="submit">Add Found Item</button>
+        </form>
+    </div>
+
+    <h2>Lost Items</h2>
+    <ul id="lost-items-list"></ul>
+
+    <h2>Found Items</h2>
+    <ul id="found-items-list"></ul> 
+
+   
 
     <footer>
         <div class="container">
