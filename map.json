@@ -1,0 +1,43 @@
+[
+    {
+        "latitude": 8.360283, 
+        "longitude": 124.867513,
+        "message": "SC Building"
+    },
+    {
+        "latitude": 8.359314, 
+        "longitude": 124.867821,
+        "message": "NBSC Administration"
+    },
+    {
+        "latitude": 8.359219, 
+        "longitude": 124.868583,
+        "message": "BSBA Building"
+    },
+    {
+        "latitude": 8.360843, 
+        "longitude": 124.869447,
+        "message": "billing"
+    },
+    {
+        "latitude": 8.360161, 
+        "longitude": 124.869286,
+        "message": "TEP Department"
+    },
+    {
+        "latitude": 8.359619, 
+        "longitude": 124.869181,
+        "message": "CSS Building"
+    },
+    {
+        "latitude": 8.359197, 
+        "longitude": 124.869093,
+        "message": "GSC Building"
+    },
+    {
+        "latitude": 8.360097, 
+        "longitude": 124.868875,
+        "message": "Covered Court"
+    }
+]
+

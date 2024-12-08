@@ -1,120 +1,70 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lost and Found Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <title>Introduction to Lost and Found System</title>
+    
     <style>
         body {
+            background-image: url(particlesjs-examples.gif);
+            background-color: #f0f8ff;
+            color: #333;
             font-family: Arial, sans-serif;
-            margin: 20px;
         }
-
+        .container {
+       
+            width: 80%;
+            margin: 0 auto;
+            padding-top: 120px;
+        }
         h1 {
             text-align: center;
+            color: #4b0082;
         }
-
-        .form-container {
-            margin-bottom: 30px;
+        p {
+            font-size: 1.2em;
+            line-height: 1.6em;
+            text-align: justify;
         }
-
-        .form-container label {
-            font-size: 1.1em;
+        .intro-section {
+            margin-bottom: 40px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-
-        .form-container input {
-            padding: 10px;
-            margin: 10px 0;
-            width: 100%;
-            font-size: 1.1em;
-        }
-
-        .form-container button {
-            padding: 10px 20px;
-            font-size: 1.1em;
-            background-color: #4CAF50;
-            color: white;
+        .btn-primary {
+            background-color: #86107e;
+            color: #f8f8f8;
             border: none;
-            cursor: pointer;
+  
         }
-
-        .form-container button:hover {
-            background-color: #45a049;
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        li {
-            padding: 10px;
-            background-color: #f4f4f4;
-            margin: 5px 0;
-            border: 1px solid #ddd;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        button {
-            padding: 5px 10px;
-            margin: 0 5px;
-            font-size: 1.1em;
-            cursor: pointer;
-        }
-
-        .done-icon {
-            background-color: #4CAF50;
-            color: white;
-        }
-
-        .edit-icon {
-            background-color: #ffa500;
-            color: white;
+        .btn-primary:hover {
+            background-color: #800080;
         }
     </style>
 </head>
 <body>
-
-    <h1>Lost and Found Management</h1>
-
-    <div class="form-container">
-        <h2>Lost Item Form</h2>
-        <form id="lost-form">
-            <label for="lost-item">Item Description:</label>
-            <input type="text" id="lost-item" required>
-            <label for="date-time-input-lost">Date and Time:</label>
-            <input type="datetime-local" id="date-time-input-lost" required>
-            <button type="submit">Add Lost Item</button>
-        </form>
-    </div>
-
-    <div class="form-container">
-        <h2>Found Item Form</h2>
-        <form id="found-form">
-            <label for="found-item">Item Description:</label>
-            <input type="text" id="found-item" required>
-            <label for="date-time-input-found">Date and Time:</label>
-            <input type="datetime-local" id="date-time-input-found" required>
-            <button type="submit">Add Found Item</button>
-        </form>
-    </div>
-
-    <h2>Lost Items</h2>
-    <ul id="lost-items-list"></ul>
-
-    <h2>Found Items</h2>
-    <ul id="found-items-list"></ul> 
-
-   
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Lost and Found | All rights reserved.</p>
+    <div class="container">
+        <div class="intro-section">
+            <h1>Welcome to the Lost and Found System</h1>
+            <p>Welcome to our Lost and Found system! This platform is designed to help users easily report lost or found items in a designated area, such as a campus or building. The system integrates interactive maps and forms to efficiently manage and track lost items, helping both those who have lost something and those who have found an item to reunite them with their belongings.</p>
+            <p>The page includes:</p>
+            <ul>
+                <li>A form to report lost items, including details about the item, location, and time.</li>
+                <li>A form for reporting found items, where you can select from a list of previously reported lost items.</li>
+                <li>Interactive campus map to visualize item locations and easily find lost and found items in specific buildings or areas.</li>
+                <li>A real-time list of lost and found items, displayed for easy reference.</li>
+            </ul>
+            <p>To begin using the system, you can navigate to the respective forms for reporting items or use the map to explore the locations where items may have been lost or found.</p>
+            <a href="application.html" class="btn btn-primary">Get Started</a>
         </div>
-    </footer>
-
-    <script src="app.js"></script>
+    </div>
 </body>
 </html>
