@@ -1,12 +1,12 @@
 const locationImages = {
-    'SC Building': 'harve.jpg', 
-      'NBSC Administration': 'harve.jpg',
-    'BSBA Building': 'harve.jpg',
-    'TEP Department': 'harve.jpg',
-    'CSS Building': 'harve.jpg',
-    'GSC Building': 'harve.jpg',
-    'Covered Court': 'harve.jpg',
-    'billing': 'harve.jpg'
+    'SC Building': 'particlesjs-examples.gif', 
+      'NBSC Administration': 'particlesjs-examples.gif',
+    'BSBA Building': 'particlesjs-examples.gif',
+    'TEP Department': 'particlesjs-examples.gif',
+    'CSS Building': 'particlesjs-examples.gif',
+    'GSC Building': 'particlesjs-examples.gif',
+    'Covered Court': 'particlesjs-examples.gif',
+    'billing': 'particlesjs-examples.gif'
 };
         class MapHandler {
     constructor(mapElementId, initialCoords, initialZoomLevel) {
