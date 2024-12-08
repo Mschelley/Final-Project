@@ -1,7 +1,6 @@
-
 const locationImages = {
     'SC Building': 'harve.jpg', 
-    'NBSC Administration': 'harve.jpg',
+      'NBSC Administration': 'harve.jpg',
     'BSBA Building': 'harve.jpg',
     'TEP Department': 'harve.jpg',
     'CSS Building': 'harve.jpg',
