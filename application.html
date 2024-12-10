@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <title>Applet 2 - Leaflet Map</title>
-
     <style>
         body {
             background-image: url(blue.gif);
@@ -35,11 +34,11 @@
 
         .btn-container {
             position: absolute;
-            top: 190%; /* Moved further down to 150% */
-            right: 2%; /* Keeps buttons on the right side of the map */
+            top: 150%; /* Adjusted this to move the buttons upwards */
+            right: 2%;
             display: flex;
-            flex-direction: column; /* Stack buttons vertically */
-            gap: 10px; /* Space between buttons */
+            flex-direction: column;
+            gap: 10px;
             z-index: 1000;
             padding: 10px;
         }
@@ -54,7 +53,7 @@
             border-radius: 5px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
             transition: background-color 0.3s;
-            min-width: 150px; /* Ensures buttons are of a minimum size */
+            min-width: 150px;
         }
 
         .btn-container button:hover {
@@ -65,10 +64,10 @@
         .form-container {
             justify-content: center;
             color: #000000;
-            width: 83%;
+            width: 90%;
             background-color: #ffffff;
-            border-radius: 10px;
-            padding: 20px;
+            border-radius: 50px;
+            padding: 100px;
             margin-top: 20px;
             margin-bottom: 30px;
             font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -122,7 +121,7 @@
         }
 
         .list-item {
-            background-color: #0c04fe;
+            background-color: #dedee0;
             padding: 10px;
             margin: 5px 0;
             border-radius: 4px;
@@ -151,13 +150,17 @@
         .claim-instructions p {
             color: #555;
         }
+
+        /* Added custom styles to change Home text color to white */
+        .navbar-brand {
+            color: white !important;
+        }
     </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg" style="background-color: rgba(244, 244, 247, 0.847);">
+    <nav class="navbar navbar-expand-lg" style="background-color: rgba(1, 1, 14, 0.847);">
         <div class="container-fluid">
-            <!-- Add logo inside the navbar-brand link -->
             <a class="navbar-brand" href="index.html">
                 <img src="nbsc.jpg" alt="Logo" style="height: 50px; width: auto;">
                 Home
@@ -168,37 +171,15 @@
         </div>
     </nav>
 
+    <!-- Content remains the same -->
     <div class="form-container">
-        <h2>Lost Item Form</h2>
-        <form id="lost-form">
-            <label for="lost-item">Item Description:</label>
-            <input type="text" id="lost-item" required>
-            <label for="lost-location">Location Where Item Was Lost:</label>
-            <select id="lost-location" required>
-                <option value="">Select a location</option>
-                <option value="SC Building">SC Building</option>
-                <option value="BSBA Building">BSBA Building</option>
-                <option value="TEP Department">TEP Department</option>
-                <option value="CSS Building">CSS Building</option>
-                <option value="GSC Building">GSC Building</option>
-                <option value="Covered Court">Covered Court</option>
-                <option value="billing">billing</option>
-            </select>
-            <label for="lost-date-time">Date and Time Item Was Lost:</label>
-            <input type="datetime-local" id="lost-date-time" required>
-            <button type="submit">Submit Lost Item</button>
-        </form>
-    </div>
+        <h2>Lost and Found Item Form</h2>
+        <form id="item-form">
+            <label for="item-description">Item Description:</label>
+            <input type="text" id="item-description" required>
 
-    <div class="form-container">
-        <h2>Found Item Form</h2>
-        <form id="found-form">
-            <label for="found-item">Item Description:</label>
-            <select id="found-item" required>
-                <option value="">Select a lost item</option>
-            </select>
-            <label for="found-location">Location:</label>
-            <select id="found-location" required>
+            <label for="item-location">Location:</label>
+            <select id="item-location" required>
                 <option value="">Select a location</option>
                 <option value="SC Building">SC Building</option>
                 <option value="BSBA Building">BSBA Building</option>
@@ -206,11 +187,17 @@
                 <option value="CSS Building">CSS Building</option>
                 <option value="GEC Building">GEC Building</option>
                 <option value="Covered Court">Covered Court</option>
-                <option value="billing">billing</option>
+                <option value="billing">Billing</option>
             </select>
-            <label for="found-date-time">Date and Time Item Was Found:</label>
-            <input type="datetime-local" id="found-date-time" required>
-            <button type="submit">Submit Found Item</button>
+
+            <label for="item-date-time">Date and Time:</label>
+            <input type="datetime-local" id="item-date-time" required>
+
+            <label>Item Type:</label>
+            <label><input type="radio" name="item-type" value="Lost" required> Lost</label>
+            <label><input type="radio" name="item-type" value="Found" required> Found</label>
+
+            <button type="submit">Submit</button>
         </form>
     </div>
 
@@ -238,12 +225,6 @@
     <div class="container list-container">
         <h3>Found Items</h3>
         <div id="found-items-list"></div>
-    </div>
-
-    <!-- Claim Instructions Section -->
-    <div class="claim-instructions">
-        <h3>Claim Your Found Item</h3>
-        <p>If you have found an item and it has been reported, please go to the <strong>NBSC Administration Building</strong> to claim the item. Make sure to bring identification and proof that the item belongs to you.</p>
     </div>
 
     <script src="map.js"></script>

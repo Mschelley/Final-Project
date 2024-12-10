@@ -93,78 +93,32 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Handling Lost and Found Form Submissions
-document.getElementById('lost-form').addEventListener('submit', function(event) {
+document.getElementById('item-form').addEventListener('submit', function(event) {
     event.preventDefault();
 
-    const itemDescription = document.getElementById('lost-item').value;
-    const lostLocation = document.getElementById('lost-location').value;
-    const lostDateTime = document.getElementById('lost-date-time').value;
+    const itemDescription = document.getElementById('item-description').value;
+    const location = document.getElementById('item-location').value;
+    const dateTime = document.getElementById('item-date-time').value;
+    const itemType = document.querySelector('input[name="item-type"]:checked').value; // Lost or Found
 
-    if (!itemDescription || !lostLocation || !lostDateTime) {
+    if (!itemDescription || !location || !dateTime) {
         alert('Please fill in all fields.');
         return;
     }
 
-    // Add lost item to button and list
-    const button = document.getElementById(`${lostLocation.toLowerCase().replace(' ', '-')}-btn`);
-    const newLostItemText = document.createElement('div');
-    newLostItemText.textContent = `Lost: ${itemDescription} on ${lostDateTime}`;
-    button.appendChild(newLostItemText);
+    // Add item to list and button based on whether it's Lost or Found
+    const button = document.getElementById(`${location.toLowerCase().replace(' ', '-')}-btn`);
+    const newItemText = document.createElement('div');
+    newItemText.textContent = `${itemType}: ${itemDescription} on ${dateTime}`;
+    button.appendChild(newItemText);
 
-    // Add found item to select options
-    const foundItemSelect = document.getElementById('found-item');
-    const option = document.createElement('option');
-    option.value = itemDescription;
-    option.textContent = `${itemDescription} (Lost at ${lostLocation})`;
-    foundItemSelect.appendChild(option);
+    const itemList = itemType === 'Lost' ? document.getElementById('lost-items-list') : document.getElementById('found-items-list');
+    const newItem = document.createElement('div');
+    newItem.classList.add('list-item');
+    newItem.innerHTML = `<p><span class="location">${location}</span>: ${itemDescription} on ${dateTime}</p>`;
+    itemList.appendChild(newItem);
 
-    // Add item to lost items list
-    const lostItemsList = document.getElementById('lost-items-list');
-    const lostItem = document.createElement('div');
-    lostItem.classList.add('list-item');
-    lostItem.innerHTML = `<p><span class="location">${lostLocation}</span>: ${itemDescription} on ${lostDateTime}</p>`;
-    lostItemsList.appendChild(lostItem);
-
-    alert('Lost item submitted successfully.');
-    document.getElementById('lost-form').reset();
-});
-
-document.getElementById('found-form').addEventListener('submit', function(event) {
-    event.preventDefault();
-
-    const foundItemDescription = document.getElementById('found-item').value;
-    const foundLocation = document.getElementById('found-location').value;
-    const foundDateTime = document.getElementById('found-date-time').value;
-
-    if (!foundItemDescription || !foundLocation || !foundDateTime) {
-        alert('Please fill in all fields.');
-        return;
-    }
-
-    // Display found item details
-    alert(`Found item: ${foundItemDescription} at ${foundLocation} on ${foundDateTime}`);
-
-    const foundItemsList = document.getElementById('found-items-list');
-    const foundItem = document.createElement('div');
-    foundItem.classList.add('list-item');
-    foundItem.innerHTML = `<p><span class="location">${foundLocation}</span>: ${foundItemDescription} on ${foundDateTime}</p>`;
-    foundItemsList.appendChild(foundItem);
-
-    // Remove found item from options and button
-    const foundItemSelect = document.getElementById('found-item');
-    const options = foundItemSelect.querySelectorAll('option');
-    options.forEach(option => {
-        if (option.value === foundItemDescription) {
-            option.remove();
-        }
-    });
-
-    const button = document.getElementById(`${foundLocation.toLowerCase().replace(' ', '-')}-btn`);
-    const buttonText = button.querySelector('div');
-    if (buttonText) {
-        buttonText.remove();
-    }
-
-    alert('Found item submitted successfully.');
-    document.getElementById('found-form').reset();
+    // Display confirmation message
+    alert(`${itemType} item submitted successfully.`);
+    document.getElementById('item-form').reset();
 });
