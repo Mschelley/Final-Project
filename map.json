@@ -18,6 +18,7 @@
         "latitude": 8.360843, 
         "longitude": 124.869447,
         "message": "billing"
+        
     },
     {
         "latitude": 8.360161, 
@@ -32,7 +33,7 @@
     {
         "latitude": 8.359197, 
         "longitude": 124.869093,
-        "message": "GSC Building"
+        "message": "GEC Building"
     },
     {
         "latitude": 8.360097, 
