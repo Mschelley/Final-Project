@@ -10,9 +10,8 @@
     <title>Applet 2 - Leaflet Map</title>
 
     <style>
-        
         body {
-            background-image: url(particlesjs-examples.gif);
+            background-image: url(blue.gif);
             background-color: rgb(255, 255, 255);
             color: rgb(20, 3, 3);
             background-size: 100%;
@@ -25,43 +24,87 @@
         }
 
         #map {
-            top: 110%;
-            width: 70%;
+            width: 85%;
             height: 700px;
             border: 5px solid rgb(70, 207, 17);
             box-sizing: border-box;
+            margin-left: auto;
+            margin-right: auto;
+            right: 8%;
         }
 
         .btn-container {
             position: absolute;
-            top: 103%;
-            left: 65%;
-            transform: translateY(-50%);
+            top: 190%; /* Moved further down to 150% */
+            right: 2%; /* Keeps buttons on the right side of the map */
             display: flex;
-            flex-direction: column;
-            gap: 45px;
-            width: 35%;
-            border: #2c00dc;
-            text-decoration-color: #ffffff;
+            flex-direction: column; /* Stack buttons vertically */
+            gap: 10px; /* Space between buttons */
+            z-index: 1000;
+            padding: 10px;
         }
 
         .btn-container button {
             background-color: #ffffff;
             border: none;
             color: rgb(0, 0, 0);
-            padding: 10px;
+            padding: 12px;
             font-size: 16px;
             cursor: pointer;
             border-radius: 5px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
             transition: background-color 0.3s;
-            min-height: 100%;
-            border: #2c00dc;
+            min-width: 150px; /* Ensures buttons are of a minimum size */
         }
 
         .btn-container button:hover {
             background-color: #2c00dc;
-            border: #2c00dc;
+            color: white;
+        }
+
+        .form-container {
+            justify-content: center;
+            color: #000000;
+            width: 83%;
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        .form-container h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .form-container label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        .form-container input,
+        .form-container select,
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .form-container button {
+            background-color: #2c00dc;
+            color: white;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-container button:hover {
+            background-color: #1f00a5;
         }
 
         .list-container {
@@ -76,7 +119,6 @@
         .list-container h3 {
             text-align: center;
             color: #333;
-            justify-content: center;
         }
 
         .list-item {
@@ -84,7 +126,6 @@
             padding: 10px;
             margin: 5px 0;
             border-radius: 4px;
-            justify-content: center;
         }
 
         .list-item p {
@@ -94,25 +135,40 @@
         .list-item .location {
             font-weight: bold;
         }
+
+        .claim-instructions {
+            background-color: #f9f9f9;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .claim-instructions h3 {
+            color: #333;
+        }
+
+        .claim-instructions p {
+            color: #555;
+        }
     </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg" style="background-color: rgba(198, 27, 255, 0.847);">
+    <nav class="navbar navbar-expand-lg" style="background-color: rgba(244, 244, 247, 0.847);">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">Home</a>
+            <!-- Add logo inside the navbar-brand link -->
+            <a class="navbar-brand" href="index.html">
+                <img src="nbsc.jpg" alt="Logo" style="height: 50px; width: auto;">
+                Home
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                </ul>
-            </div>
         </div>
     </nav>
 
-    <br><br>
-    <div class="form-container" style="justify-content: center;color: #000000;width: 83%; background-color: #ffffff;  border-radius: 10px;border-top: 10px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+    <div class="form-container">
         <h2>Lost Item Form</h2>
         <form id="lost-form">
             <label for="lost-item">Item Description:</label>
@@ -133,8 +189,8 @@
             <button type="submit">Submit Lost Item</button>
         </form>
     </div>
-<br><br>
-    <div class="form-container" style="justify-content: center;color: #040404; background-color: #ffffff;width: 83%;  border-radius: 10px;border-top: 10px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+
+    <div class="form-container">
         <h2>Found Item Form</h2>
         <form id="found-form">
             <label for="found-item">Item Description:</label>
@@ -148,7 +204,7 @@
                 <option value="BSBA Building">BSBA Building</option>
                 <option value="TEP Department">TEP Department</option>
                 <option value="CSS Building">CSS Building</option>
-                <option value="GSC Building">GSC Building</option>
+                <option value="GEC Building">GEC Building</option>
                 <option value="Covered Court">Covered Court</option>
                 <option value="billing">billing</option>
             </select>
@@ -156,26 +212,24 @@
             <input type="datetime-local" id="found-date-time" required>
             <button type="submit">Submit Found Item</button>
         </form>
-   
     </div>
-  <br><br><br>
+
     <div class="container" style="color: white;">
         <h2>NBSC Map</h2>
         <div id="map"></div>
-
         <div class="btn-container">
             <button id="sc-building-btn">SC Building</button>
             <button id="NBSC-Admin-btn">NBSC Administration</button>
             <button id="bsba-building-btn">BSBA Building</button>
             <button id="tep-department-btn">TEP Department</button>
             <button id="css-building-btn">CSS Building</button>
-            <button id="gsc-building-btn">GSC Building</button>
+            <button id="gec-building-btn">GEC Building</button>
             <button id="covered-court-btn">Covered Court</button>
             <button id="billing-btn">billing</button>
         </div>
     </div>
-    <br><br>
-    <h2 style="color: #ffffff;">Lost and Found Report</h2>
+
+    <h2 style="color: #faf9f9;">Lost and Found Report</h2>
     <div class="container list-container">
         <h3>Lost Items</h3>
         <div id="lost-items-list"></div>
@@ -186,10 +240,13 @@
         <div id="found-items-list"></div>
     </div>
 
+    <!-- Claim Instructions Section -->
+    <div class="claim-instructions">
+        <h3>Claim Your Found Item</h3>
+        <p>If you have found an item and it has been reported, please go to the <strong>NBSC Administration Building</strong> to claim the item. Make sure to bring identification and proof that the item belongs to you.</p>
+    </div>
+
     <script src="map.js"></script>
 
-    
 </body>
 </html>
-
-

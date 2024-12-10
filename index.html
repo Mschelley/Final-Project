@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,13 +11,12 @@
     
     <style>
         body {
-            background-image: url(particlesjs-examples.gif);
+            background-image: url(blue.gif);
             background-color: #f0f8ff;
             color: #333;
             font-family: Arial, sans-serif;
         }
         .container {
-       
             width: 80%;
             margin: 0 auto;
             padding-top: 120px;
@@ -43,17 +41,34 @@
             background-color: #86107e;
             color: #f8f8f8;
             border: none;
-  
         }
         .btn-primary:hover {
             background-color: #800080;
         }
+
+        /* Logo Styles */
+        .logo-container {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .logo-container img {
+            max-width: 200px; /* Adjust the size of the logo */
+            height: auto;
+        }
     </style>
 </head>
 <body>
+
     <div class="container">
+        <!-- Logo Section -->
+        <div class="logo-container">
+            <img src="nbsc.jpg" alt="NBSC Logo"> <!-- Replace 'logo.png' with your logo image path -->
+        </div>
+
+        <!-- Introduction Section -->
         <div class="intro-section">
-            <h1>Welcome to the Lost and Found Web Application for NBSC Students</h1>
+            <h1>Welcome NBSC LOST AND FOUND</h1>
             <p>Welcome to our Lost and Found system! This platform is designed specifically for NBSC students to easily report lost or found items within the campus. Whether you've misplaced something or discovered an item that belongs to someone else, this system helps you reconnect with your belongings efficiently. The system integrates interactive maps and forms, making it easy to manage and track lost items, ensuring that both those who have lost something and those who have found it can reunite quickly.</p>
             <ul>
                 <li>A form to report lost items, including details about the item, location, and time.</li>
@@ -65,5 +80,6 @@
             <a href="application.html" class="btn btn-primary">Get Started</a>
         </div>
     </div>
+
 </body>
 </html>

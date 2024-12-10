@@ -1,24 +1,23 @@
 const locationImages = {
-    'SC Building': 'particlesjs-examples.gif', 
-      'NBSC Administration': 'particlesjs-examples.gif',
-    'BSBA Building': 'particlesjs-examples.gif',
-    'TEP Department': 'particlesjs-examples.gif',
-    'CSS Building': 'particlesjs-examples.gif',
-    'GSC Building': 'particlesjs-examples.gif',
-    'Covered Court': 'particlesjs-examples.gif',
-    'billing': 'particlesjs-examples.gif'
+    'SC Building': 'NBSC_BUILDING.jpeg', 
+    'NBSC Administration': 'particlesjs-examples.gif',
+    'BSBA Building': 'BSBA.jpeg',
+    'TEP Department': 'tep.jpeg',
+    'CSS Building': 'ccs_department.jpeg',
+    'GEC Building': 'GEC.jpeg',
+    'Covered Court': 'GYM.jpeg',
+    'billing': 'billing.jpeg'
 };
-        class MapHandler {
-    constructor(mapElementId, initialCoords, initialZoomLevel) {
 
+class MapHandler {
+    constructor(mapElementId, initialCoords, initialZoomLevel) {
         this.mapInstance = L.map(mapElementId).setView(initialCoords, initialZoomLevel);
         this.setupTileLayer();
         this.markerList = [];
         this.markerLocations = {}; 
         this.markerPopups = {};  
-        this.hasZoomed = false;    
+        this.hasZoomed = false;
     }
-
 
     setupTileLayer() {
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -27,13 +26,10 @@ const locationImages = {
         }).addTo(this.mapInstance);
     }
 
- 
     addMapMarker(latitude, longitude, label) {
         const marker = L.marker([latitude, longitude]).addTo(this.mapInstance);
-  
         this.markerLocations[label] = { latitude, longitude };
-
-
+        
         const imageUrl = locationImages[label];
         const popupContent = `
             <div style="text-align: center;">
@@ -47,34 +43,28 @@ const locationImages = {
         this.markerList.push(marker);
     }
 
-
     moveToMarker(label) {
         const location = this.markerLocations[label];
         if (location) {
-       
             const currentZoom = this.mapInstance.getZoom();
             let newZoom = currentZoom;
 
-       
             if (!this.hasZoomed) {
-                newZoom = Math.min(currentZoom + 1, 20); 
-                this.hasZoomed = true; 
+                newZoom = Math.min(currentZoom + 1, 20);
+                this.hasZoomed = true;
             }
 
-          
             this.mapInstance.flyTo([location.latitude, location.longitude], newZoom, {
-                duration: 1.5 
+                duration: 1.5
             });
-
 
             const popup = this.markerPopups[label];
             if (popup) {
                 popup.setLatLng([location.latitude, location.longitude]);
-                popup.openOn(this.mapInstance); 
+                popup.openOn(this.mapInstance);
             }
         }
     }
-
 
     loadMarkers(url) {
         fetch(url)
@@ -88,101 +78,93 @@ const locationImages = {
     }
 }
 
-
 const mapInstance = new MapHandler('map', [8.359735, 124.869206], 17);
 
-
 document.addEventListener('DOMContentLoaded', () => {
-
     mapInstance.loadMarkers('map.json');
 
- 
     const buttons = document.querySelectorAll('.btn-container button');
     buttons.forEach((button, index) => {
-    
         const markerLabel = button.innerText.trim();
         button.addEventListener('click', () => {
-            mapInstance.moveToMarker(markerLabel); 
+            mapInstance.moveToMarker(markerLabel);
         });
     });
 });
 
-  
-        document.getElementById('lost-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-    
-            const itemDescription = document.getElementById('lost-item').value;
-            const lostLocation = document.getElementById('lost-location').value;
-            const lostDateTime = document.getElementById('lost-date-time').value;
-    
-            if (!itemDescription || !lostLocation || !lostDateTime) {
-                alert('Please fill in all fields.');
-                return;
-            }
-    
-            const button = document.getElementById(`${lostLocation.toLowerCase().replace(' ', '-')}-btn`);
-            const newLostItemText = document.createElement('div');
-            newLostItemText.textContent = `Lost: ${itemDescription} on ${lostDateTime}`;
-            button.appendChild(newLostItemText);
-    
-      
-            const foundItemSelect = document.getElementById('found-item');
-            const option = document.createElement('option');
-            option.value = itemDescription;
-            option.textContent = `${itemDescription} (Lost at ${lostLocation})`;
-            foundItemSelect.appendChild(option);
-    
+// Handling Lost and Found Form Submissions
+document.getElementById('lost-form').addEventListener('submit', function(event) {
+    event.preventDefault();
 
-            const lostItemsList = document.getElementById('lost-items-list');
-            const lostItem = document.createElement('div');
-            lostItem.classList.add('list-item');
-            lostItem.innerHTML = `<p><span class="location">${lostLocation}</span>: ${itemDescription} on ${lostDateTime}</p>`;
-            lostItemsList.appendChild(lostItem);
-    
-         
-            alert('Lost item submitted successfully.');
-            document.getElementById('lost-form').reset();
-        });
-    
-      
-        document.getElementById('found-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-    
-            const foundItemDescription = document.getElementById('found-item').value;
-            const foundLocation = document.getElementById('found-location').value;
-            const foundDateTime = document.getElementById('found-date-time').value;
-    
-            if (!foundItemDescription || !foundLocation || !foundDateTime) {
-                alert('Please fill in all fields.');
-                return;
-            }
-    
+    const itemDescription = document.getElementById('lost-item').value;
+    const lostLocation = document.getElementById('lost-location').value;
+    const lostDateTime = document.getElementById('lost-date-time').value;
 
-            alert(`Found item: ${foundItemDescription} at ${foundLocation} on ${foundDateTime}`);
-    
-            const foundItemsList = document.getElementById('found-items-list');
-            const foundItem = document.createElement('div');
-            foundItem.classList.add('list-item');
-            foundItem.innerHTML = `<p><span class="location">${foundLocation}</span>: ${foundItemDescription} on ${foundDateTime}</p>`;
-            foundItemsList.appendChild(foundItem);
-    
-           
-            const foundItemSelect = document.getElementById('found-item');
-            const options = foundItemSelect.querySelectorAll('option');
-            options.forEach(option => {
-                if (option.value === foundItemDescription) {
-                    option.remove();
-                }
-            });
-    
-            
-            const button = document.getElementById(`${foundLocation.toLowerCase().replace(' ', '-')}-btn`);
-            const buttonText = button.querySelector('div');
-            if (buttonText) {
-                buttonText.remove();
-            }
-    
-        
-            alert('Found item submitted successfully.');
-            document.getElementById('found-form').reset();
-        });
+    if (!itemDescription || !lostLocation || !lostDateTime) {
+        alert('Please fill in all fields.');
+        return;
+    }
+
+    // Add lost item to button and list
+    const button = document.getElementById(`${lostLocation.toLowerCase().replace(' ', '-')}-btn`);
+    const newLostItemText = document.createElement('div');
+    newLostItemText.textContent = `Lost: ${itemDescription} on ${lostDateTime}`;
+    button.appendChild(newLostItemText);
+
+    // Add found item to select options
+    const foundItemSelect = document.getElementById('found-item');
+    const option = document.createElement('option');
+    option.value = itemDescription;
+    option.textContent = `${itemDescription} (Lost at ${lostLocation})`;
+    foundItemSelect.appendChild(option);
+
+    // Add item to lost items list
+    const lostItemsList = document.getElementById('lost-items-list');
+    const lostItem = document.createElement('div');
+    lostItem.classList.add('list-item');
+    lostItem.innerHTML = `<p><span class="location">${lostLocation}</span>: ${itemDescription} on ${lostDateTime}</p>`;
+    lostItemsList.appendChild(lostItem);
+
+    alert('Lost item submitted successfully.');
+    document.getElementById('lost-form').reset();
+});
+
+document.getElementById('found-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const foundItemDescription = document.getElementById('found-item').value;
+    const foundLocation = document.getElementById('found-location').value;
+    const foundDateTime = document.getElementById('found-date-time').value;
+
+    if (!foundItemDescription || !foundLocation || !foundDateTime) {
+        alert('Please fill in all fields.');
+        return;
+    }
+
+    // Display found item details
+    alert(`Found item: ${foundItemDescription} at ${foundLocation} on ${foundDateTime}`);
+
+    const foundItemsList = document.getElementById('found-items-list');
+    const foundItem = document.createElement('div');
+    foundItem.classList.add('list-item');
+    foundItem.innerHTML = `<p><span class="location">${foundLocation}</span>: ${foundItemDescription} on ${foundDateTime}</p>`;
+    foundItemsList.appendChild(foundItem);
+
+    // Remove found item from options and button
+    const foundItemSelect = document.getElementById('found-item');
+    const options = foundItemSelect.querySelectorAll('option');
+    options.forEach(option => {
+        if (option.value === foundItemDescription) {
+            option.remove();
+        }
+    });
+
+    const button = document.getElementById(`${foundLocation.toLowerCase().replace(' ', '-')}-btn`);
+    const buttonText = button.querySelector('div');
+    if (buttonText) {
+        buttonText.remove();
+    }
+
+    alert('Found item submitted successfully.');
+    document.getElementById('found-form').reset();
+});
